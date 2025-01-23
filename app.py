@@ -101,6 +101,16 @@ def submit_post():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+# DELETE API endpoint
+@app.route('/delete_post/<post_id>', methods=['DELETE'])
+def delete_post_api(post_id):
+    try:
+        delete_post(post_id)  # Call the delete_post function
+        return jsonify({"message": f"Post with ID {post_id} deleted successfully"}), 200
+    except Exception as e:
+        return jsonify({"error": f"Failed to delete post {post_id}"}), 500
+
 
 # Run the Flask app
 if __name__ == '__main__':
