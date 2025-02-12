@@ -102,7 +102,7 @@ def query_huggingface(post_id, text) -> PostAnalysisResult:
 
     # Call Hugging Face model
     result = llm.invoke(prompt)
-    print(f"Raw response from Hugging Face model: {result}")  # Debugging line to check raw response
+    #print(f"Raw response from Hugging Face model: {result}")  # Debugging line to check raw response
 
     # Clean the result by removing Python-style comments and extra text
     cleaned_result = result.strip().replace("\n", "").replace("```", "")
@@ -243,5 +243,4 @@ def delete_post_api(post_id):
         return jsonify({"message": f"Post with ID {post_id} deleted successfully"}), 200
     except Exception as e:
         return jsonify({"error": f"Failed to delete post {post_id}"}), 500
-
 
